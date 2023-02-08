@@ -1,0 +1,6 @@
+WIN_WIDTH = 700
+WIN_HEIGHT = 700
+
+IMG_BULLET = 'img/bullet.png'
+
+WIN_COLOR = (15, 255, 20)

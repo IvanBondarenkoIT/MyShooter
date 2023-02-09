@@ -1,6 +1,29 @@
 WIN_WIDTH = 700
 WIN_HEIGHT = 700
 
-IMG_BULLET = 'img/bullet.png'
-
 WIN_COLOR = (15, 255, 20)
+LOSE_COLOR = (255, 0, 0)
+FPS = 50
+
+SCORE = 0
+GOAL = 10
+LOST = 0
+MAX_LOST = 3
+LEVEL = 1
+
+LOST = 0
+
+
+# image
+ICON = 'img/icon.png'
+IMG_BACK = 'img/player.jpg'
+IMG_BULLET = 'img/bullet.png'
+IMG_HERO = 'img/player'
+IMG_ENEMY = 'img/player'
+
+
+# audios
+MAIN_MUSIC_PATH = ''
+EFFECTS_MUSIC_PATH = ''
+
+PATH_FILE_STAT = ''

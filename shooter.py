@@ -40,15 +40,30 @@ class Enemy(GameSprite):
     """Enemy Class"""
     def update(self) -> None:
         self.rect.x += self.speed
+        global LOST
+        if self.rect.y > WIN_HEIGHT:
+            self.rect.x = randint(80, WIN_WIDTH - 80)
+            self.rect.y = 0
+            LOST += 1
 
 
 class Bullet(GameSprite):
     """Bullet Class"""
-    pass
+    def update(self) -> None:
+        self.rect.y += self.speed
+        if self.rect.y < 0:
+            self.kill()
 
 
 class Statistics:
-    pass
+    def __init__(self, st_point_win=0, st_point_lose=0, duration=0, level=0):
+        self._st_point_win = st_point_win
+        self._st_point_lose = st_point_lose
+        self._duration = duration
+        self._level = level
+
+    def __repr__(self):
+        return f'{self._st_point_win} {self._st_point_lose} {self._duration} {self._level}'
 
 
 def save_statistic(filename):

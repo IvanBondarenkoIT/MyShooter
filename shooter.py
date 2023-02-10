@@ -69,3 +69,73 @@ class Statistics:
 def save_statistic(filename):
     pass
 
+
+font.init()
+font1 = font.Font(None, 80)
+win = font1.render(WIN_TEXT, True, WIN_COLOR)
+lose = font1.render(LOSE_TEXT, True, LOSE_COLOR)
+
+mixer.init()
+mixer.music.load(MAIN_MUSIC_PATH)
+mixer.music.play(-1)
+mixer.music.set_volume(0.01)
+fire_sound = mixer.Sound(EFFECTS_MUSIC_PATH)
+fire_sound.set_volume(0.01)
+
+
+# create window
+display.set_icon(image.load(ICON))
+display.set_caption(WIN_TITLE)
+window = display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+background = transform.scale(image.load(IMG_BACK), (WIN_WIDTH, WIN_HEIGHT))
+timer = time.time()
+ship = Player(IMG_HERO, 5, WIN_HEIGHT - 100, 80, 100, 10)
+monster = sprite.Group
+for i in range(1, 6):
+    monsters = Enemy(IMG_ENEMY, randint(80, WIN_WIDTH - 80), -40, 80, 50, randint(1, 5))
+    monsters.add(monster)
+
+bullets = sprite.Group()
+
+stat = []
+
+finish = False
+run = True
+while run:
+    for e in event.get():
+        if e.type == QUIT:
+            run = False
+        elif e.type == KEYDOWN:
+            fire_sound.play()
+            ship.fire()
+
+        if LEVEL < 1:
+            run = False
+
+        if not finish:
+            window.blit(background, (0, 0))
+
+            ship.update()
+            monsters.update()
+            bullets.update()
+
+            ship.reset()
+            monster.draw(window)
+            bullets.draw(window)
+
+            if LEVEL == 3:
+                for c in collides:
+                    SCORE += 1
+                    monster = Enemy(IMG_ENEMY, randint(80, (WIN_WIDTH - 80),
+                                                       -40, 80, 50, randint(1, 7)))
+                    monsters.add(monster)
+
+            collides = sprite.groupcollide(monsters, bullets, True, True)
+
+            for c in collides:
+                SCORE += 1
+                monster = Enemy(IMG_ENEMY, randint(80, (WIN_WIDTH - 80),
+                                                   -40, 80, 50, randint(1, 7)))
+                monsters.add(monster)
+
+

@@ -89,10 +89,11 @@ display.set_caption(WIN_TITLE)
 window = display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 background = transform.scale(image.load(IMG_BACK), (WIN_WIDTH, WIN_HEIGHT))
 timer = time.time()
+# create sprites
 ship = Player(IMG_HERO, 5, WIN_HEIGHT - 100, 80, 100, 10)
-monster = sprite.Group
+monsters = sprite.Group
 for i in range(1, 6):
-    monsters = Enemy(IMG_ENEMY, randint(80, WIN_WIDTH - 80), -40, 80, 50, randint(1, 5))
+    monster = Enemy(IMG_ENEMY, randint(80, WIN_WIDTH - 80), -40, 80, 50, randint(1, 5))
     monsters.add(monster)
 
 bullets = sprite.Group()
@@ -137,5 +138,11 @@ while run:
                 monster = Enemy(IMG_ENEMY, randint(80, (WIN_WIDTH - 80),
                                                    -40, 80, 50, randint(1, 7)))
                 monsters.add(monster)
+
+            if sprite.spritecollide(ship, monsters, False) or LOST >= MAX_LOST:
+                finish = True
+                window.blit(win, (200, 200))
+
+            # lebel_win =
 
 

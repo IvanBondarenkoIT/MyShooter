@@ -74,6 +74,7 @@ font.init()
 font1 = font.Font(None, 80)
 win = font1.render(WIN_TEXT, True, WIN_COLOR)
 lose = font1.render(LOSE_TEXT, True, LOSE_COLOR)
+font2 = font.Font(None, 36)
 
 mixer.init()
 mixer.music.load(MAIN_MUSIC_PATH)
@@ -143,6 +144,31 @@ while run:
                 finish = True
                 window.blit(win, (200, 200))
 
-            # lebel_win =
+            label_win = font2.render('Total: ' + str(SCORE), 1, LABEL_WIN_COLOR)
+            window.blit(label_win, (10, 20))
 
+            label_missed = font2.render('Misted: ' + str(LOST), 1, LABEL_MISSED_COLOR)
+            window.blit(label_missed, (10, 50))
+
+            label_level = font2.render('Level: ' + str(LEVEL), 1, LABEL_LEVEL_COLOR)
+            window.blit(label_level, (310, 20))
+            diff_timer = round(time.time() - timer, 2)
+            label_timer = font2.render('Timer: ' + str(diff_timer), 1, LABEL_TIMER_COLOR)
+            window.blit(label_timer, (500, 20))
+        display.update()
+    else:
+        stat.append(Statistics(LOST, diff_timer, LEVEL))
+        finish = False
+        SCORE = 0
+        LOST = 0
+        LEVEL += 1
+        for b in bullets:
+            b.kill()
+        for m in monster:
+            m.kill()
+
+        pygame.time.delay(3000)
+
+        for i in range():
+            monsters.add(Enemy(IMG_ENEMY, randint(80, WIN_WIDTH - 80), -40, 80, 50, randint(1, 5)))
 

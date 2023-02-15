@@ -25,15 +25,15 @@ LOST = 0
 
 
 # image
-ICON = 'img/icon.png'
-IMG_BACK = 'img/player.jpg'
+ICON = 'img/bullet.png'
+IMG_BACK = 'img/background.jpg'
 IMG_BULLET = 'img/bullet.png'
-IMG_HERO = 'img/player'
-IMG_ENEMY = 'img/player'
+IMG_HERO = 'img/player.png'
+IMG_ENEMY = 'img/enemy.png'
 
 
 # audios
 MAIN_MUSIC_PATH = 'audio/background.wav'
 EFFECTS_MUSIC_PATH = 'audio/laser.wav'
 
-PATH_FILE_STAT = ''
+PATH_FILE_STAT = 'game_stat.txt'

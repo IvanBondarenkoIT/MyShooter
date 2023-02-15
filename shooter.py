@@ -67,7 +67,9 @@ class Statistics:
 
 
 def save_statistic(filename):
-    pass
+    with open(filename, 'w', encoding='UTF-8') as f:
+        for row in stat:
+            f.write(str(row) + '\n')
 
 
 font.init()
@@ -122,7 +124,7 @@ while run:
             bullets.update()
 
             ship.reset()
-            monster.draw(window)
+            monsters.draw(window)
             bullets.draw(window)
 
             if LEVEL == 3:
@@ -172,3 +174,7 @@ while run:
         for i in range():
             monsters.add(Enemy(IMG_ENEMY, randint(80, WIN_WIDTH - 80), -40, 80, 50, randint(1, 5)))
 
+        timer = time.time()
+    pygame.time.delay(FPS)
+
+save_statistic(PATH_FILE_STAT)

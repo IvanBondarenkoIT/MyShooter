@@ -4,6 +4,8 @@ from setting import *
 from random import randint
 import time
 
+LOST = 0
+
 
 class GameSprite(sprite.Sprite):
     def __init__(self, player_image, player_x, player_y, size_x, size_y, player_speed):
@@ -94,7 +96,7 @@ background = transform.scale(image.load(IMG_BACK), (WIN_WIDTH, WIN_HEIGHT))
 timer = time.time()
 # create sprites
 ship = Player(IMG_HERO, 5, WIN_HEIGHT - 100, 80, 100, 10)
-monsters = sprite.Group
+monsters = sprite.Group()
 for i in range(1, 6):
     monster = Enemy(IMG_ENEMY, randint(80, WIN_WIDTH - 80), -40, 80, 50, randint(1, 5))
     monsters.add(monster)
@@ -120,6 +122,8 @@ while run:
             window.blit(background, (0, 0))
 
             ship.update()
+            # print(monsters)
+
             monsters.update()
             bullets.update()
 
@@ -166,13 +170,14 @@ while run:
         LEVEL += 1
         for b in bullets:
             b.kill()
-        for m in monster:
+        for m in monsters:
             m.kill()
 
         pygame.time.delay(3000)
 
-        for i in range():
-            monsters.add(Enemy(IMG_ENEMY, randint(80, WIN_WIDTH - 80), -40, 80, 50, randint(1, 5)))
+        for i in range(1, 6):
+            monster = Enemy(IMG_ENEMY, randint(80, WIN_WIDTH - 80), -40, 80, 50, randint(1, 5))
+            monsters.add(monster)
 
         timer = time.time()
     pygame.time.delay(FPS)

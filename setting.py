@@ -1,5 +1,5 @@
 WIN_WIDTH = 700
-WIN_HEIGHT = 50
+WIN_HEIGHT = 500
 
 
 WIN_TEXT = 'YOU WIN'
@@ -25,7 +25,7 @@ LOST = 0
 
 
 # image
-ICON = 'img/bullet.png'
+ICON = 'img/background.jpg'
 IMG_BACK = 'img/background.jpg'
 IMG_BULLET = 'img/bullet.png'
 IMG_HERO = 'img/player.png'
